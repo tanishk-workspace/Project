@@ -1,21 +1,15 @@
-#define irsensorpin 2
-#include<Chrono.h>
-Chrono mychrono(Chrono::SECONDS);
+#define irpin 2
 void setup() {
-  pinMode(irsensorpin, INPUT);
-  Serial.begin(9600);
+  // put your setup code here, to run once:
+   pinMode(LED_BUILTIN, OUTPUT);
+   pinMode(irpin,INPUT);
+   Serial.begin(9600);
 }
-void loop() {
-  int Sensorvalue = digitalRead(irsensorpin);
-  mychrono.resume();
-  if(Sensorvalue = HIGH){
-    int time=mychrono.elapsed();
-    Serial.println(time,'\n');
-  }
-  else{
-    mychrono.stop();
-  }
 
-  //display rpm delay 1000ms
-  //else there will be false positive error
+void loop(){
+ int SensorValue=digitalRead(irpin);
+ Serial.println(SensorValue);
+ if(SensorValue=HIGH){
+  digitalWrite(LED_BUILTIN, HIGH);
+ }
 }
